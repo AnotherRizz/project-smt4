@@ -26,42 +26,21 @@
 
 <body>
 
-  <nav>
-    <div class="second-nav p-2 d-flex mx-auto justify-content-center ">
-      <h4 class="fs-5 my-2 fw-bold ">PRIMAGAMA SPORT ARENA</h4>
+<nav class="navbar navbar-expand-lg border-bottom fixed-top">
+  <div class="container">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link active" aria-current="page" href="#">Home</a>
+        <a class="nav-link" href="#">Cara Booking</a>
+        <a class="nav-link" href="#">Lapangan</a>
+       
+      </div>
     </div>
-  </nav>
-
-<nav class="navbar navbar-expand-lg fixed-bottom  border  rounded-pill w-50 mx-auto" style="background-color: #EEEEEE;">
-    <div class="container  ">
-        <div class="collapse navbar-collapse " id="navbarNav">
-            <ul class="navbar-nav  mx-auto">
-                <li class="nav-item ">
-                    <a class="nav-link" href="#">
-                        <div class="nav-item-content">
-                            <i class="fa-solid fa-house "></i>
-                            <span>Home</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    <div class="nav-item-content">
-                    <i class="fa-solid fa-route"></i>
-                            <span>Cara Pemesanan</span>
-                        </div>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                    <div class="nav-item-content">
-                    <i class="fa-solid fa-pen-to-square"></i>
-                            <span>Reservasi</span>
-                        </div>
-                    </a>
-                </li>
-                
-            </ul>
-        </div>
-    </div>
+  </div>
 </nav>
+
+
