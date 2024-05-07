@@ -26,21 +26,33 @@
 
 <body>
 
-<nav class="navbar navbar-expand-lg border-bottom fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">Navbar</a>
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container ">
+    <a class="navbar-brand" href="#"><i class="fa-solid fa-volleyball p-1 fs-2" style="color: #ffc100;"></i>Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav ms-auto">
-        <a class="nav-link active" aria-current="page" href="#">Home</a>
-        <a class="nav-link" href="#">Cara Booking</a>
-        <a class="nav-link" href="#">Lapangan</a>
+    <div class="collapse navbar-collapse " id="navbarNavAltMarkup">
+      <div class="navbar-nav mx-auto gap-4" id="navLinks">
+        <a class="nav-link "  href="#">Home</a>
+        <a class="nav-link"  href="#alur">Lapangan</a>
+        <a class="nav-link"   href="#tips">Tips</a>
        
       </div>
     </div>
+    <i class="fa-solid fa-user fs-5" style="color: #ffc100;"></i>
+    <p class="ms-4 mt-4">user</p>
   </div>
 </nav>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+</script>
+<script src="<?= base_url('assets/js/header.js') ?>"></script>
+</body>
+
+</html>
 
 

@@ -6,49 +6,121 @@
   /* border: 1px solid black; */
 }
 
-body {
-  min-height: 200vh;
-  background-color: #092635;
+
+
+.navbar-brand{
+  font-size: 1.7rem;
+  font-weight: 500;
+  color: #FFF6E0;
+}
+.navbar-brand:hover{
+  color: #ffc100;
+}
+
+.nav-link{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #FFF6E0;
+}
+.nav-link:hover{
+  color: #ffc100;
+}
+
+
+
+.blurr {
+  background-color: #31363fc7;
+ 
+  
+}
+
+
+
+
+
+
+main {
+  width: full;
+  min-height: 100vh;
+  background-image: url('../img/lapangan.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 13rem;
+}
+
+main h2{
+  font-size: 3rem;
+  font-weight: 600;
+  color: #fcc95a;
+}
+
+main .btn{
+  background-color: #ffc100;
+  color: #FFF6E0;
+ width: 15rem;
+  border-radius: 18px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+main .btn:hover{
+  color: #ffc100;
+  background-color: #FFF6E0;
+
+}
+
+#tips {
+ margin-top: 11rem;
+  width: full;
+}
+#lapangan {
+ margin-top: -4rem;
+  width: full;
+}
+
+#lapangan img{
+  width: 50%;
+  position: absolute;
+  left: 17rem;
  
 }
 
-
-
-.nav-item {
-  margin-right: 45px;
-}
-
-.nav-link span {
-  font-size: 0.7rem;
-  font-weight: 600;
-}
-
-#main h3 {
-  font-size: 3rem;
-  font-weight: 900;
-}
-
-#alur h5 {
-  font-size: 2rem;
-}
-.card {
+#lapangan .card {
   transition: transform 0.5s;
+ border-radius: 2rem;
+ background-color: #ffc100;
+ box-shadow: 0 20px 46px rgba(87, 87, 87, 0.862);
 }
 
-.card:hover {
-  box-shadow: 0 8px 16px rgba(87, 87, 87, 0.862);
+#lapangan .card:hover {
+  box-shadow: 0 10px 16px rgba(87, 87, 87, 0.862);
   border: none;
   transform: scale(1.02);
 }
 
-.card-body p {
+#lapangan .btn{
   font-size: 0.8rem;
+  width: 10 rem;
+  font-weight: 600;
+  color: #FFF6E0;
+  background-color: #CF0A0A;
+}
+
+#lapangan .card-header{
+  font-size: 1.3rem;
   font-weight: 700;
-  color: #ffc100;
+  color: #FFF6E0;
 }
-.card img{
-    filter: grayscale(100%);
+#lapangan .card-title{
+  font-size: 0.9rem;
+  font-weight: 700;
+  
 }
-.card img:hover{
-    filter: none;
+
+#lapangan  p {
+  font-size: 0.8rem;
+  font-weight: 400;
+ 
 }
+
