@@ -8,6 +8,9 @@
 
 
 
+
+
+
 .navbar-brand{
   font-size: 1.7rem;
   font-weight: 500;
@@ -53,7 +56,8 @@ main {
 main h2{
   font-size: 3rem;
   font-weight: 600;
-  color: #fcc95a;
+  color: #fcc100;
+  font-family: "Freeman", sans-serif;
 }
 
 main .btn{
@@ -71,7 +75,8 @@ main .btn:hover{
 }
 
 #tips {
- margin-top: 11rem;
+ margin-top: 5rem;
+ margin-bottom: 5rem;
   width: full;
 }
 #lapangan {
@@ -110,7 +115,9 @@ main .btn:hover{
 #lapangan .card-header{
   font-size: 1.3rem;
   font-weight: 700;
-  color: #FFF6E0;
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+  letter-spacing: 1px;
 }
 #lapangan .card-title{
   font-size: 0.9rem;
@@ -124,3 +131,45 @@ main .btn:hover{
  
 }
 
+#tips .card-header{
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+}
+
+#tips button{
+  font-weight: 600;
+  color: #3D3B40;
+}
+
+#tips li{
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #3D3B40;
+}
+
+
+/* modal */
+.modal-body h4{
+  font-size: 1.3rem;
+  font-weight: 600;
+  font-family: "Freeman", sans-serif;
+  color: #3D3B40;
+  margin-bottom: 3px;
+}
+
+.modal-body input{
+  width: 100%;
+  border-radius:8px;
+  font-size: 0.9rem;
+  font-weight: 400;
+  font-family: "Freeman", sans-serif;
+  color: #3D3B40;
+}
+.modal-body #lap1 ,#lap2{
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: #3D3B40;
+
+}

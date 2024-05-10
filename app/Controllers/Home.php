@@ -10,8 +10,7 @@ class Home extends BaseController
         'judul' => 'Home'
        ];
       
-        echo view('../Views/layout/template_header',$data);
-        echo view('../Views/user/home');
+        echo view('../Views/user/home',$data);
     
        
     }
