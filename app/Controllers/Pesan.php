@@ -10,7 +10,8 @@ class Pesan extends BaseController
         'judul' => 'Pemesanan Lap Volly'
        ];
       
-        echo view('../Views/modals/modal-voli',$data);
+        echo view('../Views/pesan/form-pesan-voli',$data);
+        echo view('../Views/pesan/template-pesan',$data);
     
        
     }

@@ -1,0 +1,13 @@
+.card h1{
+    color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+  font-size: 2rem;
+}
+
+.card button , input{
+    color: #3D3B40;
+    font-family: "Freeman", sans-serif;
+    font-size: 0.9rem;
+
+}
+

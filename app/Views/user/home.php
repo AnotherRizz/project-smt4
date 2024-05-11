@@ -40,7 +40,7 @@
 
         </div>
         <i class="fa-solid fa-user fs-5" style="color: #ffc100;"></i>
-        <p class="ms-4 mt-4">user</p>
+        <p class="ms-2 mt-4 text-light"><?= $namaPelanggan ?></p>
       </div>
     </div>
   </nav>
@@ -80,7 +80,7 @@
             <div class="card-body">
               <h6 class="card-title">pilih jadwal main mu !</h6>
               <p>mulai dari Rp.60.000 / jam</p>
-              <a href="#" class="btn " data-bs-toggle="modal" data-bs-target="#voli">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
+              <a href="<?= base_url('pesan/voli') ?>" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
                   style="color: #ffffff;"></i></a>
             </div>
           </div>
@@ -94,7 +94,7 @@
             <div class="card-body">
               <h6 class="card-title">pilih jadwal main mu !</h6>
               <p>mulai dari Rp.60.000 / jam</p>
-              <a href="#" class="btn "data-bs-toggle="modal" data-bs-target="#futsal">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
+              <a href="" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
                   style="color: #ffffff;"></i></a>
             </div>
           </div>
@@ -108,7 +108,7 @@
             <div class="card-body">
               <h6 class="card-title">pilih jadwal main mu !</h6>
               <p>mulai dari Rp.60.000 / jam</p>
-              <a href="#" class="btn "data-bs-toggle="modal" data-bs-target="#bultang">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
+              <a href="#" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
                   style="color: #ffffff;"></i></a>
             </div>
           </div>
@@ -116,94 +116,6 @@
       </div>
     </div>
   </section>
-  <!-- modal start -->
-<!-- form pemesanan voli -->
-<div class="modal fade" id="voli" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Pemesanan voli</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-4 ">
-            <h4>Isi Data</h4>
-            <div class="mb-3">
-              <input type="text" class="focus-ring focus-ring-warning form-control form-control-lg" name="nama"
-                id="nama" placeholder="Nama Anda" autocomplete="off">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="focus-ring focus-ring-warning form-control form-control-lg" name="telp"
-                id="telp" placeholder="NO Telp / Wa" autocomplete="off">
-            </div>
-          </div>
-          <div class="col-8 text-center">
-            <h4>Pilihan Lapangan</h4>
-            <button class="btn btn-sm border-warning " id="lap1">lapangan 1</button>
-            <button class="btn btn-sm border-warning " id="lap2">lapangan 2</button>
-            <div class="row mt-3">
-
-              <img src="<?= base_url('assets/img/lapangan.png') ?>" style="width: 18rem;" class="mx-auto d-none"
-                id="img1" alt="">
-              <img src="<?= base_url('assets/img/bg.png') ?>" style="width: 18rem;" class="mx-auto d-none" id="img2"
-                alt="">
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- form pemesanan futsal -->
-<div class="modal fade" id="futsal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Pemesanan Futsal</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- form pemesanan bulutangkis -->
-<div class="modal fade" id="bultang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-  aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h1 class="modal-title fs-5" id="staticBackdropLabel">Pemesanan Bulutangkis</h1>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-danger">Understood</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- modal end -->
-
- 
-
-
 
 
   <!-- tips tips -->

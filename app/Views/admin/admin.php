@@ -78,8 +78,8 @@
                                             autocomplete="off">
                                     </div>
                                     <div class="mb-3">
-                                        <label for="lokasi" class="form-label">Alamat</label>
-                                        <input type="text" class="form-control" id="lokasi" name="lokasi" required
+                                        <label for="kategori" class="form-label">Kategori</label>
+                                        <input type="text" class="form-control" id="kategori" name="kategori" required
                                             autocomplete="off">
                                     </div>
                                
@@ -99,7 +99,7 @@
                             <th>ID</th>
                             <th>NAMA LAPANGAN</th>
                             <th>GAMBAR</th>
-                            <th>ALAMAT</th>
+                            <th>KATEGORI</th>
                             <th>AKSI</th>
                         </tr>
                     </thead>
@@ -110,7 +110,7 @@
                             <td><?= $l['id_lapangan']; ?></td>
                             <td><?= $l['nama_lapangan'] ?></td>
                             <td><img src="<?= base_url('assets/img/uploads/').$l['gambar']; ?>" width="100" alt=""></td>
-                            <td><?= $l['lokasi'] ?></td>
+                            <td><?= $l['kategori'] ?></td>
                             <td>
                                 <!-- modal ubah data -->
                                 <!-- Button trigger modal -->

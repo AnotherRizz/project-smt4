@@ -151,25 +151,4 @@ main .btn:hover{
 
 
 /* modal */
-.modal-body h4{
-  font-size: 1.3rem;
-  font-weight: 600;
-  font-family: "Freeman", sans-serif;
-  color: #3D3B40;
-  margin-bottom: 3px;
-}
 
-.modal-body input{
-  width: 100%;
-  border-radius:8px;
-  font-size: 0.9rem;
-  font-weight: 400;
-  font-family: "Freeman", sans-serif;
-  color: #3D3B40;
-}
-.modal-body #lap1 ,#lap2{
-  font-size: 0.7rem;
-  font-weight: 500;
-  color: #3D3B40;
-
-}

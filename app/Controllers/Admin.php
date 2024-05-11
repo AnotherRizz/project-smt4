@@ -34,7 +34,7 @@ class Admin extends BaseController
         $this->lapanganModel->save([
             'nama_lapangan' =>$this->request->getVar('nama_lapangan'),
             'gambar' =>$namabGambar,
-            'lokasi' =>$this->request->getVar('lokasi')
+            'kategori' =>$this->request->getVar('kategori')
         ]);
 
         session()->setFlashdata('pesan','Data Berhasil Ditambahkan');
