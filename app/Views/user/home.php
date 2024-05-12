@@ -27,7 +27,7 @@
 <body>
   <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container ">
-      <a class="navbar-brand" href="#"><i class="fa-solid fa-volleyball p-1 fs-2" style="color: #ffc100;"></i>Navbar</a>
+      <a class="navbar-brand" href="#"><i class="fa-solid fa-volleyball p-1 fs-2" style="color: #ffc100;"></i>Logo</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -39,11 +39,12 @@
           <a class="nav-link" href="#tips">Panduan</a>
 
         </div>
-        <i class="fa-solid fa-user fs-5" style="color: #ffc100;"></i>
-        <p class="ms-2 mt-4 text-light"><?= $namaPelanggan ?></p>
+        <a href="<?= base_url('home/profile') ?>"><i class="fa-solid fa-user fs-5" style="color: #ffc100;"></i></a>
+        
       </div>
     </div>
   </nav>
+  
 
   <main id="home">
     <div class="container-fluid text-center text-light ">
@@ -71,48 +72,22 @@
   <section id="lapangan">
     <div class="container">
       <div class="row">
+        <?php foreach ($lapangan as $lap) : ?>
         <div class="col">
           <div class="card overflow-hidden">
-            <img src="<?= base_url('assets/img/voli.png') ?>" alt="">
+            <img src="<?= base_url('assets/img/').$lap['ikon_gambar']; ?>" alt="">
             <div class="card-header z-2">
-              Lapangan Volly
+            <?= $lap['kategori'] ?>
             </div>
             <div class="card-body">
               <h6 class="card-title">pilih jadwal main mu !</h6>
               <p>mulai dari Rp.60.000 / jam</p>
-              <a href="<?= base_url('pesan/voli') ?>" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
+              <a href="pesan/voli/<?= $lap['id_lapangan']; ?>" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
                   style="color: #ffffff;"></i></a>
             </div>
           </div>
         </div>
-        <div class="col">
-          <div class="card overflow-hidden">
-            <img src="<?= base_url('assets/img/bola.png') ?>" alt="">
-            <div class="card-header z-2">
-              Lapangan Futsal
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">pilih jadwal main mu !</h6>
-              <p>mulai dari Rp.60.000 / jam</p>
-              <a href="" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
-                  style="color: #ffffff;"></i></a>
-            </div>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card overflow-hidden">
-            <img src="<?= base_url('assets/img/bultang.png') ?>" alt="">
-            <div class="card-header z-2">
-              Lapangan Bulutangkis
-            </div>
-            <div class="card-body">
-              <h6 class="card-title">pilih jadwal main mu !</h6>
-              <p>mulai dari Rp.60.000 / jam</p>
-              <a href="#" class="btn ">pesan <i class="fa-solid fa-arrow-up-from-bracket px-2"
-                  style="color: #ffffff;"></i></a>
-            </div>
-          </div>
-        </div>
+        <?php endforeach; ?>
       </div>
     </div>
   </section>

@@ -27,3 +27,27 @@
   color: #3D3B40;
 
 }
+
+/* profil */
+
+#profil h2{
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+#profil .card-header{
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+#profil td{
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+
