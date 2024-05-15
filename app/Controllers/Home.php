@@ -24,7 +24,7 @@ class Home extends BaseController
                     'namaPelanggan' => session()->get('pelanggan')
                    ];
                   
-                    echo view('../Views/user/home',$data);
+                    echo view('../Views/user/home',$data,);
             } else{
                 $data =[
                     'lapangan' => $lapangan,
@@ -37,9 +37,13 @@ class Home extends BaseController
     }
     public function profile(){
        if( session()->get('logged_in')){
+            // Jika sudah login, ambil nama pelanggan dan id pelanggan dari session
+        $namaPelanggan = session()->get('pelanggan');
+        $idPelanggan = session()->get('id_pelanggan');
         $data =[
             'judul' => 'Profile',
-            'namaPelanggan' => session()->get('pelanggan')
+            'namaPelanggan' => $namaPelanggan,
+            'id_pelanggan'  => $idPelanggan
         ];
         echo view('../Views/user/profile',$data);
     }else{

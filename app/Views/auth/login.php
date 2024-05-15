@@ -35,7 +35,7 @@
                     <!-- Nested Row within Card Body -->
                     <div class="row">
                         <?php if(session()->getFlashdata('pesan')) :?>
-                        <div class="alert alert-success" role="alert">
+                        <div class="alert alert-success" role="alert" id="flashMessage">
                             <?= session()->getFlashdata('pesan');?>
                             
                         </div>
@@ -54,15 +54,20 @@
                                         <input type="email"
                                             class="focus-ring focus-ring-warning form-control form-control" name="email"
                                             id="email" placeholder="Email Anda" autocomplete="off">
+                                            <?php if(session()->getFlashdata('email')) :?>
+                        <p class="text-danger fw-bold" style="font-size: 0.7rem;" id="flashMessage">
+                            <?= session()->getFlashdata('email');?>
+                        </p>
+                        <?php endif ?>
                                     </div>
                                     <div class="mb-3">
                                     
                                         <input type="password"
                                             class="focus-ring focus-ring-warning form-control form-control"
                                             name="password" id="password" placeholder="Password" autocomplete="off">
-                                            <?php if(session()->getFlashdata('salah')) :?>
-                        <p class="text-danger fw-bold" style="font-size: 0.7rem;" >
-                            <?= session()->getFlashdata('salah');?>
+                                            <?php if(session()->getFlashdata('password')) :?>
+                        <p class="text-danger fw-bold" style="font-size: 0.7rem;" id="flashMessage">
+                            <?= session()->getFlashdata('password');?>
                         </p>
                         <?php endif ?>
                                     </div>
@@ -93,7 +98,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
 </script>
-<script src="<?= base_url('assets/js/header.js') ?>"></script>
+<script src="<?= base_url('assets/js/auth.js') ?>"></script>
 </body>
 
 </html>

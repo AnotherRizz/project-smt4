@@ -34,13 +34,15 @@
         <h3 class="text-center mt-1 mb-5">Pemesanan <?= $lapangan['kategori'] ?> </h3>
         <div class="row">
           <div class="col-4 text-center">
+            <form action="/pesan/order/<?= $id_pelanggan; ?>">
             <h4>Isi Data</h4>
             <div class="mb-3 mt-4">
+              <input type="hidden" value="<?= $lapangan['kategori'] ?>" name="<?= $lapangan['kategori'] ?>">
               <input type="text" class="focus-ring focus-ring-warning form-control form-control" name="nama" id="nama"
                 placeholder="Nama Anda" autocomplete="off">
             </div>
             <div class="mb-3">
-              <input type="text" class="focus-ring focus-ring-warning form-control form-control" name="telp" id="telp"
+              <input type="text" class="focus-ring focus-ring-warning form-control form-control" name="no_telp" id="telp"
                 placeholder="NO Telp / Wa" autocomplete="off">
             </div>
           </div>
@@ -59,15 +61,18 @@
         </div>
         <div class="row">
           <div class="col-7">
-            <form action="" method="POST">
+            <!-- <form action="" method="POST"> -->
+              
+              <label for="booking-time1">Waktu Mulai:</label>
+              <input type="time" id="booking-time1" name="waktu_mulai" required><br>
+              <label for="booking-time2">Waktu Selesai:</label>
+              <input type="time" id="booking-time2" name="waktu_selesai" required><br>
               <label for="booking-date">Tanggal Pemesanan:</label>
-              <input type="date" id="booking-date" name="booking-date" required><br>
+              <input type="date" id="booking-date" name="tanggal" required><br>
 
-              <label for="booking-time">Waktu Pemesanan:</label>
-              <input type="time" id="booking-time" name="booking-time" required><br>
-
-              <button type="submit">Cek Ketersediaan</button>
-            </form>
+              <button type="submit" class="btn btn-primary btn-sm mt-4">Cek Ketersediaan</button>
+              </form>
+            <!-- </form> -->
           </div>
         </div>
       </div>

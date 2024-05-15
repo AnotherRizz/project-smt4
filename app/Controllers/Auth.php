@@ -73,18 +73,22 @@ class Auth extends BaseController
                 session()->set('logged_in', true);
                 session()->set('id_pelanggan', $pelanggan['id_pelanggan']);
                 session()->set('pelanggan', $pelanggan['nama']);
+
+                    // Mendapatkan id_pelanggan ke dalam variabel
+    
+
     
            
                 // Redirect ke halaman setelah login
-                return redirect()->to('/');
+                return redirect()->to('/',);
             } else {
                 // Jika kata sandi tidak cocok, tampilkan pesan kesalahan
-                session()->setFlashdata('pesan', 'Password salah');
+                session()->setFlashdata('password', 'Password salah');
                 return redirect()->back()->withInput();
             }
         } else {
             // Jika pengguna tidak ditemukan, tampilkan pesan kesalahan
-            session()->setFlashdata('pesan', 'Email tidak ditemukan');
+            session()->setFlashdata('email', 'Email tidak ditemukan');
             return redirect()->back()->withInput();
         }
     }

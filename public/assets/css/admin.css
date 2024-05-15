@@ -1,10 +1,104 @@
 *{
+
     font-family: "Poppins", sans-serif;
     padding: 0;
     margin: 0;
     /* border: 1px solid black; */
    
 }
+
+
+
 tbody > tr > td{
     vertical-align: middle;
 }
+#nav .navbar{
+    min-height: 100vh;
+    background-color: #222831;
+}
+
+#navigasi .btn{
+   width: 13.9rem;
+}
+
+.row a{
+text-decoration: none;
+font-size: 0.9rem;
+font-weight: 500;
+color: white;
+}
+
+/* admin dashboard */
+
+#admin .card-footer a{
+   font-size: 0.7rem;
+}
+#admin .card-footer{
+   background-color: #3d3b4085;
+}
+#admin .navbar-brand{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #faf9fb;
+  
+}
+#admin .card-body i{
+    font-size: 5rem;
+    opacity: 30%;
+  
+  
+}
+
+#admin .card-title{
+    font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  font-family: "Freeman", sans-serif;
+}
+#admin .judul{
+    font-size: 1.7rem;
+  font-weight: 700;
+  color: #3D3B40;
+  font-family: "Freeman", sans-serif;
+}
+#admin h3{
+    font-size: 2.8rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: "Freeman", sans-serif;
+}
+
+/* user admin */
+#user .btn{
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #ffff;
+    border-radius: 12px;
+}
+#user td{
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: #3D3B40;
+  
+}
+#user .navbar-brand{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3D3B40;
+  
+}
+#user th{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+
+/* data lap */
+
+#data .navbar-brand{
+    font-size: 1rem;
+    font-weight: 500;
+    color: #3D3B40;
+  
+}
+

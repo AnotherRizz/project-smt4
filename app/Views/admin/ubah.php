@@ -28,9 +28,9 @@
                             value="<?= $lapangan['gambar'] ?>">
                     </div>
                     <div class="mb-3">
-                        <label for="lokasi" class="form-label">Alamat</label>
-                        <input type="text" class="form-control" id="lokasi" name="lokasi" required autocomplete="off"
-                            value="<?= $lapangan['lokasi'] ?>">
+                        <label for="kategori" class="form-label">Kategori</label>
+                        <input type="text" class="form-control" id="kategori" name="kategori" required autocomplete="off"
+                            value="<?= $lapangan['kategori'] ?>">
                     </div>
                     <button type="submit" class="btn border border-danger btn-sm">
                         Ubah
