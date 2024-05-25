@@ -1,5 +1,5 @@
 <div class="col-10 ms-auto " id="admin">
-<nav class="navbar bg-primary">
+<nav class="navbar bg-info ">
   <div class="container-fluid">
     <span class="navbar-brand mb-0 h1">Admin / Dashboard <span><i class="fa-solid fa-shop mx-2"style="color: #3D3B40;"></i></span></span>
   </div>

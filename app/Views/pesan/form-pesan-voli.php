@@ -26,66 +26,83 @@
 
 <body>
 
-
-<main>
-  <div class="container">
-    <div class="card w-75 mb-3 mx-auto mt-5">
-      <div class="card-body">
-        <h3 class="text-center mt-1 mb-5">Pemesanan <?= $lapangan['kategori'] ?> </h3>
-        <div class="row">
-          <div class="col-4 text-center">
-            <form action="/pesan/order/<?= $id_pelanggan; ?>">
-            <h4>Isi Data</h4>
-            <div class="mb-3 mt-4">
-              <input type="hidden" value="<?= $lapangan['kategori'] ?>" name="<?= $lapangan['kategori'] ?>">
-              <input type="text" class="focus-ring focus-ring-warning form-control form-control" name="nama" id="nama"
-                placeholder="Nama Anda" autocomplete="off">
-            </div>
-            <div class="mb-3">
-              <input type="text" class="focus-ring focus-ring-warning form-control form-control" name="no_telp" id="telp"
-                placeholder="NO Telp / Wa" autocomplete="off">
-            </div>
-          </div>
-          <div class="col-8 text-center">
-            <h4 class="mb-4">Pilihan Lapangan</h4>
-            <button class="btn btn-sm border-warning " id="lap1">lapangan 1</button>
-            <button class="btn btn-sm border-warning " id="lap2">lapangan 2</button>
-            <div class="row mt-3">
-
-              <img src="<?= base_url('assets/img/lapangan.png') ?>" style="width: 18rem;" class="mx-auto d-none"
-                id="img1" alt="">
-              <img src="<?= base_url('assets/img/bg.png') ?>" style="width: 18rem;" class="mx-auto d-none" id="img2"
-                alt="">
+  <main>
+    <div class="container">
+      <div class="row g-5 mt-4">
+        <div class="col-md-6">
+          <div class="card mb-3 mx-auto">
+            <div class="card-body">
+              <h3 class="text-center mt-1 mb-5">Pemesanan <?= $lapangan['kategori'] ?> </h3>
+              <form action="/pesan/order/<?= $id_pelanggan; ?>" method="post">
+                <div class="mb-3 mt-4">
+                  <input type="hidden" value="<?= $lapangan['kategori'] ?>" name="kategori">
+                  <input type="text" class="form-control border-info" name="nama" id="nama" placeholder="Nama Anda"
+                    autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <input type="number" class="form-control border-info" name="no_telp" id="telp"
+                    placeholder="NO Telp / Wa" autocomplete="off" required>
+                </div>
+                <div class="mb-3">
+                  <label for="booking-time1">Waktu Mulai: <span>min jam 08.00</span></label>
+                  <input type="time" id="booking-time1" class="form-control border-info" name="waktu_mulai"min="08:00" max="22:00" required>
+                </div>
+                <div class="mb-3">
+                  <label for="booking-time2">Waktu Selesai: <span>max jam 22.00</span></label><br>
+                  <input type="time" id="booking-time2" class="form-control border-info" name="waktu_selesai" min="08:00" max="22:00" required>
+                </div>
+                <div class="mb-3">
+                  <label for="booking-date">Tanggal Pemesanan:</label>
+                  <input type="date" id="booking-date" class="form-control border-info" name="tanggal" required>
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm mt-4 mb-2 text-center">Pesan</button>
+              </form>
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-7">
-            <!-- <form action="" method="POST"> -->
-              
-              <label for="booking-time1">Waktu Mulai:</label>
-              <input type="time" id="booking-time1" name="waktu_mulai" required><br>
-              <label for="booking-time2">Waktu Selesai:</label>
-              <input type="time" id="booking-time2" name="waktu_selesai" required><br>
-              <label for="booking-date">Tanggal Pemesanan:</label>
-              <input type="date" id="booking-date" name="tanggal" required><br>
-
-              <button type="submit" class="btn btn-primary btn-sm mt-4">Cek Ketersediaan</button>
-              </form>
-            <!-- </form> -->
+        <div class="col-md-6">
+          <div class="card mx-auto">
+            <div class="card-body">
+            <h4 class="mb-4">Jadwal Booking <?= $lapangan['kategori'] ?>
+                <select class="form-select" id="inputGroupSelect01">
+                  <option value="1">Hari Ini</option>
+                  <option value="2">Besok</option>
+                  <option value="3">Lusa</option>
+                </select>
+              </h4>
+            <div id="booking-schedule">
+                <?php foreach ($order as $o) : ?>
+                  <div class="row mb-3 booking-item" data-date="<?= $o['tanggal'] ?>">
+                    <button class="btn btn-sm btn-primary fs-6 w-100 rounded-pill"><?= $o['waktu_mulai'] ?>.00 -
+                      <?= $o['waktu_selesai'] ?>.00</button>
+                  </div>
+                <?php endforeach; ?>
+              </div>
+            </div>
           </div>
         </div>
       </div>
     </div>
+  </main>
 
-  </div>
-</main>
-
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="<?= base_url('assets/js/pesan.js') ?>"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      <?php if (session()->getFlashdata('pesan')): ?>
+        const flashdata = <?= json_encode(session()->getFlashdata('pesan')) ?>;
+        Swal.fire({
+          title: flashdata.title,
+          text: flashdata.text,
+          icon: flashdata.icon,
+          confirmButtonText: 'OK'
+        });
+      <?php endif; ?>
+    });
+  </script>
+
 </body>
 
 </html>

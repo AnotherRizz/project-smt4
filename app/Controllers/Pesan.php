@@ -18,9 +18,10 @@ class Pesan extends BaseController
     
 
     }
-    public function voli($id,)
+    public function voli($id)
     {
         $lapangan = $this->lapanganModel->find($id);
+        $order = $this->OrderModel->where('kategori', $lapangan['kategori'])->findAll();
        
 
         if( session()->get('logged_in')){
@@ -30,7 +31,8 @@ class Pesan extends BaseController
         'judul' => 'Pemesanan Lap Volly',
         'lapangan' => $lapangan,
         'namaPelanggan' => $namaPelanggan,
-        'id_pelanggan' => $idPelanggan
+        'id_pelanggan' => $idPelanggan,
+        'order' => $order
         
         
        ];
@@ -43,25 +45,77 @@ class Pesan extends BaseController
        
     }
 
-    public function order($id_pelanggan){
-        $mulai = floatval($this->request->getVar('waktu_mulai'));
-        $selesai = floatval($this->request->getVar('waktu_selesai'));
-        $durasi = $selesai - $mulai ;
-        $durasi_menit = floor($durasi );
+    public function order($id_pelanggan) {
+        $OrderModel = new OrderModel();
+        
+        // Ambil input dari form
+        $nama = $this->request->getVar('nama');
+        $no_telp = $this->request->getPost('no_telp');
+        $tanggal = $this->request->getPost('tanggal');
+        $waktu_mulai = $this->request->getPost('waktu_mulai');
+        $waktu_selesai = $this->request->getPost('waktu_selesai');
+        $kategori = $this->request->getPost('kategori');
+    
+        // Konversi waktu ke detik
+        $mulai = strtotime("$tanggal $waktu_mulai");
+        $selesai = strtotime("$tanggal $waktu_selesai");
+    
+        // Hitung durasi dalam menit
+        $durasi_menit = ($selesai - $mulai) / 60;
+    
+        // Hitung harga (misal, harga per menit adalah 750)
+        $harga_per_menit = 750;
+        $total_harga = $durasi_menit * $harga_per_menit;
+    
+        // Cek apakah ada pesanan yang bentrok dengan waktu yang diberikan pada tanggal yang sama
+        $cekOrder = $OrderModel->where('tanggal', $tanggal)
+            ->groupStart()
+                ->where('waktu_mulai <', $waktu_selesai)
+                ->where('waktu_selesai >', $waktu_mulai)
+            ->groupEnd()
+            ->findAll();
+    
+        if (count($cekOrder) > 0) {
+            // Jika ada bentrokan, kembalikan pesan error
+            session()->setFlashdata('pesan', [
+                'title' => 'Unavailable',
+                'text' => 'Waktu yang Anda pilih sudah terpesan pada tanggal tersebut, coba jam lain.',
+                'icon' => 'warning'
+            ]);
+            return redirect()->back();
+        } else {
+            // Jika tidak ada bentrokan, simpan pesanan
+            $OrderModel->save([
+                'id_pelanggan' => $id_pelanggan,
+                'kategori' => $kategori,
+                'nama' => $nama,
+                'no_telp' => $no_telp,
+                'waktu_mulai' => date('H:i', $mulai),
+                'waktu_selesai' => date('H:i', $selesai),
+                'tanggal' => $tanggal,
+                'durasi' => $durasi_menit,
+                'harga' => $total_harga,
+                'status' => '1'
+            ]);
+            
+            session()->setFlashdata('pesan', [
+                'title' => 'Berhasil',
+                'text' => 'Anda berhasil melakukan pesanan. Riwayat pesanan dapat dicek di profil.',
+                'icon' => 'success'
+            ]);
+            
+            return redirect()->to('/');
+        }
+    }
+    
 
-        
+    public function cekOrder(){
+      
+        $mulai = $this->request->getVar('waktu_mulai');
+        $selesai = $this->request->getVar('waktu_selesai');
+        $tanggal = $this->request->getVar('tanggal');
+
+     
        
-        $this->OrderModel->save([
-            'id_pelanggan' =>$id_pelanggan,
-            'nama' =>$this->request->getVar('nama'),
-            'no_telp' =>$this->request->getVar('no_telp'),
-            'waktu_mulai' =>$mulai,
-            'waktu_selesai' =>$selesai,
-            'tanggal' =>$this->request->getVar('tanggal'),
-            'durasi' =>$durasi_menit,
-            'status' => '1'
-        ]);
-        
-        return redirect()->to('/');
     }
 }

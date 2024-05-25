@@ -37,6 +37,15 @@ class Admin extends BaseController
         echo view('../Views/admin/footer');
     
     }
+    public function logout()
+    {
+        // Hapus semua data session yang terkait dengan login
+        session()->remove('logged_in');
+        
+    
+        // Redirect pengguna ke halaman utama atau halaman login
+        return redirect()->to('/auth');
+    }
 
     public function data(){
         $lapangan= $this->lapanganModel->findAll();
@@ -50,7 +59,7 @@ class Admin extends BaseController
             echo view('../Views/admin/footer');
     }
     public function user(){
-        $user= $this->pelangganModel->findAll();
+        $user= $this->pelangganModel->where('role', 2)->findAll();
         $data =[
             'judul' => 'Data User',
             'users' => $user
@@ -70,6 +79,17 @@ class Admin extends BaseController
             echo view('../Views/admin/header',$data);
             echo view('../Views/admin/order',$data);
             echo view('../Views/admin/footer');
+    }
+
+    public function status($id_pesanan){
+        $orderModel = new OrderModel();
+        $order = $orderModel->find($id_pesanan);
+        $order['status'] = 2; // Ubah ke status yang diinginkan
+
+            // Update data di database
+            $orderModel->update($id_pesanan, $order);
+              // Redirect kembali ke halaman sebelumnya atau halaman lain
+              return redirect()->to(base_url('admin/order'))->with('status', 'Status Berhasil Diubah.');
     }
 
 

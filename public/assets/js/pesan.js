@@ -1,26 +1,27 @@
-// pilihan lapangan
 
-// Ambil tombol-tombol "lapangan 1" dan "lapangan 2"
-const lap1Button = document.getElementById('lap1');
-const lap2Button = document.getElementById('lap2');
 
-// Ambil gambar-gambar lapangan
-const lap1Image = document.getElementById('img1');
-const lap2Image = document.getElementById('img2');
 
-// Tambahkan event listener untuk tombol "lapangan 1"
-lap1Button.addEventListener('click', function() {
-  lap1Button.classList.add('btn-warning')
-  lap2Button.classList.remove('btn-warning')
-  lap1Image.classList.remove('d-none');
-  lap2Image.classList.add('d-none');
-});
 
-// Tambahkan event listener untuk tombol "lapangan 2"
-lap2Button.addEventListener('click', function() {
-    // Tampilkan gambar lapangan 2 dan sembunyikan gambar lapangan 1
-    lap2Button.classList.add('btn-warning')
-    lap1Button.classList.remove('btn-warning')
-  lap2Image.classList.remove('d-none');
-  lap1Image.classList.add('d-none');
-});
+const selectElement = document.getElementById('inputGroupSelect01');
+const bookingItems = document.querySelectorAll('.booking-item');
+
+function filterBookings() {
+  const selectedValue = selectElement.value;
+  const currentDate = new Date();
+  bookingItems.forEach(item => {
+    const bookingDate = new Date(item.getAttribute('data-date'));
+    const diffDays = (bookingDate - currentDate) / (1000 * 60 * 60 * 24);
+    if (
+      (selectedValue == 1 && diffDays < 1 && diffDays >= 0) || 
+      (selectedValue == 2 && diffDays < 2 && diffDays >= 1) || 
+      (selectedValue == 3 && diffDays < 3 && diffDays >= 2)
+    ) {
+      item.style.display = 'block';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+selectElement.addEventListener('change', filterBookings);
+filterBookings();

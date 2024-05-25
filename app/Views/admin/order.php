@@ -1,5 +1,5 @@
-<div class="col-10 ms-auto " id="admin">
-    <nav class="navbar bg-primary">
+<div class="col-10 ms-auto " id="order">
+    <nav class="navbar bg-info">
         <div class="container-fluid">
             <span class="navbar-brand mb-0 h1">Admin / Data Penyewaan <span><i class="fa-solid fa-shop mx-2"
                         style="color: #3D3B40;"></i></span></span>
@@ -7,6 +7,7 @@
     </nav>
 
     <h1 class="judul ms-3 my-4">Data Penyewaan</h1>
+   
 
     <section id="order">
         <div class="card">
@@ -27,7 +28,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                             <?php foreach($order as $o) :?>
+                        <?php $i =1 ;?>
+                        <?php foreach($order as $o) :?>
                         <tr>
                             <td><?= $o['id_pesanan']; ?></td>
                             <td><?= $o['kategori']; ?></td>
@@ -38,7 +40,21 @@
                             <td><?= $o['tanggal']; ?></td>
                             <td><?= $o['durasi']; ?></td>
                             <td><?= $o['harga']; ?></td>
-                            <td><button class="btn btn-sm btn-info text-light fw-semibold">Sudah Bayar</button></td>
+                            <?php if($o['status']==1 ): ?>
+
+                            <td>
+                                <form action="<?= base_url('admin/status/' . $o['id_pesanan']) ?>" method="post"
+                                    class="update-status-form">
+                                    <button type="button"
+                                        class="btn btn-sm btn-danger text-light fw-semibold update-status-btn"
+                                        data-id="<?= $o['id_pesanan'] ?>">Belum Bayar</button>
+                                </form>
+                            </td>
+                            <?php else: ?>
+                            <td>
+                                <button class="btn btn-sm btn-success text-light fw-semibold">Sudah Bayar</button>
+                            </td>
+                            <?php endif; ?>
                         </tr>
                         <?php endforeach; ?>
                     </tbody>

@@ -13,5 +13,5 @@ class OrderModel extends Model
     protected $allowedFields = ['id_pelanggan', 'nama', 'kategori','no_telp','waktu_mulai','waktu_selesai','tanggal','harga','durasi','status'];
 
 
-
+   
 }

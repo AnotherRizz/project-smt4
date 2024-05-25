@@ -10,7 +10,7 @@ class PelangganModel extends Model
 {
     protected $table = 'Pelanggan';
     protected $primaryKey = 'id_pelanggan';
-    protected $allowedFields = ['nama','email', 'password'];
+    protected $allowedFields = ['nama','email', 'password','role'];
 
 
     public function getPelangganByEmail($email)

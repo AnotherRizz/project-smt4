@@ -6,6 +6,10 @@
   /* border: 1px solid black; */
 }
 
+body{
+  background-color: #222831;
+}
+
 
 
 
@@ -42,16 +46,7 @@
 
 
 
-main {
-  width: full;
-  min-height: 100vh;
-  background-image: url('../img/lapangan.png');
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
-  padding: 13rem;
-}
+
 
 main h2{
   font-size: 3rem;
@@ -79,10 +74,7 @@ main .btn:hover{
  margin-bottom: 5rem;
   width: full;
 }
-#lapangan {
- margin-top: -4rem;
-  width: full;
-}
+
 
 #lapangan img{
   width: 50%;
@@ -95,7 +87,7 @@ main .btn:hover{
   transition: transform 0.5s;
  border-radius: 2rem;
  background-color: #ffc100;
- box-shadow: 0 20px 46px rgba(87, 87, 87, 0.862);
+ box-shadow: 0 3px 8px rgba(87, 87, 87, 0.862);
 }
 
 #lapangan .card:hover {
@@ -140,14 +132,22 @@ main .btn:hover{
 
 #tips button{
   font-weight: 600;
-  color: #3D3B40;
+ 
 }
 
 #tips li{
   font-size: 0.9rem;
   font-weight: 500;
-  color: #3D3B40;
+  color: white;
 }
 
 
+/* event */
+#event .title{
+  
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #FFF6E0;
+
+}
 

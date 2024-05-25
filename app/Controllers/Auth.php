@@ -34,6 +34,7 @@ class Auth extends BaseController
         $nama = $this->request->getVar('nama');
         $email = $this->request->getVar('email');
         $password = $this->request->getVar('password');
+     
       
         // Memeriksa jika semua input tidak kosong
         if (!empty($nama) && !empty($email) && !empty($password)) {
@@ -44,9 +45,14 @@ class Auth extends BaseController
                 'nama' => $nama,
                 'email' => $email,
                 'password' => $hashedPassword, // Gunakan kata sandi yang telah di-hash
+                'role' => 2
             ]);
     
-            session()->setFlashdata('pesan', 'Akun Berhasil Dibuat');
+            session()->setFlashdata('pesan', [
+                'title' => 'Berhasil!',
+                'text' => 'Akun Berhasil Dibuat',
+                'icon' => 'success'
+            ]);
             return redirect()->to('/auth');
         } else {
             session()->setFlashdata('pesan', 'Mohon lengkapi semua input');
@@ -65,33 +71,45 @@ class Auth extends BaseController
     
         // Memeriksa apakah pengguna ditemukan
         if ($pelanggan) {
-            // Memeriksa apakah kata sandi cocok
-            if (password_verify($password, $pelanggan['password'])) {
-                // Jika kata sandi cocok, maka login berhasil
-                // Lakukan sesuatu seperti menyimpan informasi pengguna ke sesi atau cookie
-                // Anda juga bisa mengarahkan pengguna ke halaman setelah login
+            // cek role id
+            if($pelanggan['role'] == 2){
+                    // Memeriksa apakah kata sandi cocok
+                    if (password_verify($password, $pelanggan['password'])) {
+                        // Jika kata sandi cocok, maka login berhasil
+                        // Lakukan sesuatu seperti menyimpan informasi pengguna ke sesi atau cookie
+                        // Anda juga bisa mengarahkan pengguna ke halaman setelah login
+                        session()->set('logged_in', true);
+                        session()->set('id_pelanggan', $pelanggan['id_pelanggan']);
+                        session()->set('pelanggan', $pelanggan['nama']);
+
+                            // Mendapatkan id_pelanggan ke dalam variabel
+                        // Redirect ke halaman setelah login
+                        return redirect()->to('/',);
+                    } else {
+                        // Jika kata sandi tidak cocok, tampilkan pesan kesalahan
+                        session()->setFlashdata('pesan', [
+                            'title' => 'Gagal !!',
+                            'text' => 'Password salah',
+                            'icon' => 'error'
+                        ]);
+                        return redirect()->back()->withInput();
+                    }
+            }else{
                 session()->set('logged_in', true);
-                session()->set('id_pelanggan', $pelanggan['id_pelanggan']);
-                session()->set('pelanggan', $pelanggan['nama']);
-
-                    // Mendapatkan id_pelanggan ke dalam variabel
-    
-
-    
-           
-                // Redirect ke halaman setelah login
-                return redirect()->to('/',);
-            } else {
-                // Jika kata sandi tidak cocok, tampilkan pesan kesalahan
-                session()->setFlashdata('password', 'Password salah');
-                return redirect()->back()->withInput();
+                return redirect()->to('/admin',); 
             }
+           
         } else {
             // Jika pengguna tidak ditemukan, tampilkan pesan kesalahan
-            session()->setFlashdata('email', 'Email tidak ditemukan');
+            session()->setFlashdata('pesan', [
+                'title' => 'Gagal!!',
+                'text' => 'Email Tidak ditemukan',
+                'icon' => 'error'
+            ]);
             return redirect()->back()->withInput();
         }
     }
+   
     
 
 }
