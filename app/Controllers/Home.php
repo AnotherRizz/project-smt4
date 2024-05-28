@@ -3,21 +3,24 @@
 namespace App\Controllers;
 use App\Models\LapanganModel;
 use App\Models\OrderModel;
-use Dompdf\Dompdf;
-use Dompdf\Options;
+use App\Models\EventModel;
+
 
 class Home extends BaseController
 {
     protected $lapanganModel;
     protected $orderModel;
+    protected $eventModel;
     public function __construct(){
 
         $this->lapanganModel = new LapanganModel();
         $this->orderModel = new OrderModel();
+        $this->eventModel = new EventModel();
     }
     public function index()
     {
         $lapangan= $this->lapanganModel->findAll();
+        $event= $this->eventModel->findAll();
               // Cek apakah pengguna sudah login
               if (session()->get('logged_in')) {
                 // Jika sudah login, ambil nama pelanggan dari session
@@ -26,6 +29,7 @@ class Home extends BaseController
                 $data =[
                     'judul' => 'Home',
                     'lapangan' => $lapangan,
+                    'event' => $event,
                     'namaPelanggan' => session()->get('pelanggan')
                    ];
                   
@@ -33,6 +37,7 @@ class Home extends BaseController
             } else{
                 $data =[
                     'lapangan' => $lapangan,
+                    'event' => $event,
                     'judul' => 'Home'
                    
                    ];
@@ -46,8 +51,8 @@ class Home extends BaseController
             // Jika sudah login, ambil nama pelanggan dan id pelanggan dari session
         $namaPelanggan = session()->get('pelanggan');
         $idPelanggan = session()->get('id_pelanggan');
-        $orders = $this->orderModel->where('id_pelanggan', $idPelanggan)->findAll();
-
+        $orders = $this->orderModel->getOrdersByPelanggan($idPelanggan);
+       
       
         $data =[
             'judul' => 'Profile',
@@ -92,7 +97,7 @@ class Home extends BaseController
         session()->remove('pelanggan');
     
         // Redirect pengguna ke halaman utama atau halaman login
-        return redirect()->to('/');
+        return redirect()->to('/auth');
     }
     
 

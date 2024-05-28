@@ -6,14 +6,14 @@
         </div>
     </nav>
 
-    <h1 class="judul ms-3 my-4">Data Penyewaan</h1>
+    <h1 class="judul ms-3 my-2">Data Penyewaan</h1>
    
 
     <section id="order">
         <div class="card">
             <div class="card-body">
-                <table class="table">
-                    <thead>
+                <table class="table border rounded">
+                    <thead class="table-dark mb-5">
                         <tr>
                             <th>Id </th>
                             <th>Kategori</th>

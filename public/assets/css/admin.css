@@ -12,6 +12,9 @@
 tbody > tr > td{
     vertical-align: middle;
 } 
+.navbar .navbar-brand{
+    font-size: 1rem;
+}
 #nav .navbar{
     min-height: 100vh;
     background-color: #222831;
@@ -103,7 +106,8 @@ color: white;
 }
 
 
-#order .navbar-brand{
+#order
+ .navbar-brand{
     font-size: 1rem;
     font-weight: 500;
     color: #3D3B40;

@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -39,51 +38,83 @@
                             <img src="<?= base_url('assets/img/profil.png') ?>" class="img-fluid" alt="">
                         </div>
                         <div class="col-md-4 col-12 mt-3 mt-md-5">
-                            <h2>Selamat Datang <span class="text-warning"><?= $namaPelanggan ?></span></h2>
-                            <a href="<?= base_url('home/logout') ?>" class="btn btn-sm btn-secondary">Logout</a>
+                            <h2 class="text-secondary">Selamat Datang <span class="text-warning"><?= $namaPelanggan ?></span></h2>
+                            <a href="<?= base_url('home/logout') ?>" class="btn btn-sm btn-danger" id="status">Logout</a>
                         </div>
                         <div class="col-md-6 col-12 mt-4 mt-md-0">
-                            <h2 class="text-center">Riwayat Pesanan</h2>
+                            <h2 class="text-center" style="color: #481E14;">Riwayat Pesanan</h2>
                             <?php foreach ($order as $o) : ?>
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="row">
-                                        <div class="col-5">
-                                            <img src="<?= base_url('assets/img/bg.png') ?>" class="img-fluid " alt="">
+
+                                        <div class="col ">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+
+                                                        <th>Lapangan</th>
+                                                        <th>Waktu</th>
+                                                        <th>Harga</th>
+                                                        <th>Tanggal</th>
+                                                        <th>Status</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+
+                                                        <td><?= esc($o['kategori']) ?></td>
+                                                        <td><?= esc($o['durasi']) ?> Menit</td>
+                                                        <td>Rp.<?= esc($o['harga']) ?></td>
+                                                        <td><?= esc($o['tanggal']) ?></td>
+                                                        <td>
+                                                            <?php if($o['status']==1 ): ?>
+                                                            <button type="button"
+                                                                class="btn btn-sm btn-danger text-light "
+                                                                id="status">Belum Bayar</button>
+
+                                                            <?php else: ?>
+
+                                                            <button class="btn btn-sm btn-success text-light "
+                                                                id="status">Sudah Bayar</button>
+                                                        </td>
+                                                        <?php endif; ?>
+
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+
+
                                         </div>
-                                        <div class="col-3 ">
-                                            <h1>Nama :<?= esc($o['nama']) ?></h1>
-                                            <h1>No Telp :<?= esc($o['no_telp']) ?></h1>
-                                            <h1>Lapangan :<?= esc($o['kategori']) ?></h1>
-                                        </div>
-                                        <div class="col-3">
-                                            <h1>Waktu :<?= esc($o['durasi']) ?> menit</h1>
-                                            <h1>Nama :<?= esc($o['harga']) ?></h1>
-                                          
-                                        </div>
+
                                     </div>
-                                   <div class="row ms-auto">
-                                       <button class="btn btn-primary open-modal-btn " data-id="<?= $o['id_pesanan'] ?>">lihat detail
-                                           <i class="fa-solid fa-arrow-up-from-bracket px-2" style="color: #ffffff;"></i>
-                                       </button>
-                                   </div>
+                                    <div class="row ms-auto">
+                                        <button class="btn btn-secondary open-modal-btn "
+                                            data-id="<?= $o['id_pesanan'] ?>" id="status">lihat detail
+                                            <i class="fa-solid fa-arrow-up-from-bracket px-2"
+                                                style="color: #ffffff;"></i>
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                             <?php endforeach; ?>
                             <!-- Modal HTML -->
-                            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+                            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel"
+                                aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <!-- Konten dinamis akan diisi di sini -->
                                             <div id="modalContent"></div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -94,31 +125,34 @@
             </div>
         </div>
     </main>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    </script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-        $(document).ready(function() {
-            $('.open-modal-btn').on('click', function() {
-                var id_pesanan = $(this).data('id');
+       $(document).ready(function () {
+    $('.open-modal-btn').on('click', function () {
+        var id_pesanan = $(this).data('id');
 
-                // Menggunakan AJAX untuk mendapatkan data berdasarkan ID
-                $.ajax({
-                    url: '<?= base_url('home/getOrderDetails') ?>/' + id_pesanan,
-                    method: 'GET',
-                    success: function(response) {
-                        // Isi modal dengan data yang diterima
-                        $('#modalContent').html(response);
+        // Menggunakan AJAX untuk mendapatkan data berdasarkan ID
+        $.ajax({
+            url: '<?= base_url('home/getOrderDetails') ?>/' + id_pesanan, // Menghapus spasi yang tidak diperlukan
+            method: 'GET',
+            success: function (response) {
+                // Isi modal dengan data yang diterima
+                $('#modalContent').html(response);
 
-                        // Tampilkan modal
-                        var orderModal = new bootstrap.Modal(document.getElementById('orderModal'), {});
-                        orderModal.show();
-                    },
-                    error: function() {
-                        alert('Failed to fetch data');
-                    }
-                });
-            });
+                // Tampilkan modal
+                var orderModal = new bootstrap.Modal(document.getElementById('orderModal'), {});
+                orderModal.show();
+            },
+            error: function () {
+                alert('Failed to fetch data');
+            }
         });
+    });
+});
+
     </script>
 </body>
 

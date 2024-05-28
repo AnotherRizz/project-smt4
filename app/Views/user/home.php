@@ -90,27 +90,13 @@
   <div class="container my-4">
     <h4 class="title mt-5">Event Tournament</h4>
     <div class="row g-3">
+    <?php foreach ($event as $e) : ?>
         
         <div class="col-6 col-md-4 col-lg-3 img-container" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="<?= base_url('assets/img/event/poster1.jpg') ?>" class="img-fluid rounded" alt="Poster 2">
+            <img src="<?= base_url('assets/img/uploads/').$e['gambar']; ?>" class="img-fluid rounded" alt="Poster">
            
         </div>
-        <div class="col-6 col-md-4 col-lg-3 img-container" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="<?= base_url('assets/img/event/poster2.jpg') ?>" class="img-fluid rounded" alt="Poster 2">
-           
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 img-container"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="<?= base_url('assets/img/event/poster3.jpg') ?>"  class="img-fluid rounded" alt="Poster 3">
-           
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 img-container"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="<?= base_url('assets/img/event/poster4.jpg') ?>"  class="img-fluid rounded" alt="Poster 4">
-           
-        </div>
-        <div class="col-6 col-md-4 col-lg-3 img-container"  data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <img src="<?= base_url('assets/img/event/poster5.jpg') ?>"  class="img-fluid rounded" alt="Poster 5">
-           
-        </div>
+        <?php endforeach; ?>   
     </div>
 </div>
 

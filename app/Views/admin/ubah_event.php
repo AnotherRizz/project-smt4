@@ -12,29 +12,28 @@
 <body>
     <div class="container d-flex justify-content-center">
         <div class="card mt-5" style="width: 30rem;">
-            <img src="<?= base_url('assets/img/bg-main.png'); ?>" class="card-img-top w-25 mx-auto" alt="...">
+            <img src="<?= base_url('assets/img/uploads/').$event['gambar']; ?>" class="card-img-top w-25 mx-auto" alt="...">
             <div class="card-body">
-                <h5 class="card-title text-center">Lapangan <?= $lapangan['nama_lapangan'] ?></h5>
-                <form action="/admin/update" method="post">
-                    <input type="hidden" name="id_lapangan" value="<?= $lapangan['id_lapangan'] ?>">
+                <h5 class="card-title text-center"><?= $event['nama'] ?></h5>
+                <form action="/event/update" method="post">
+                    <input type="hidden" name="id_event" value="<?= $event['id_event'] ?>">
                     <div class="mb-3">
-                        <label for="nama_lapangan" class="form-label">Nama Lapangan</label>
-                        <input type="text" class="form-control" id="nama_lapangan" name="nama_lapangan" required
-                            autocomplete="off" value="<?= $lapangan['nama_lapangan'] ?>">
+                        <label for="nama" class="form-label">Nama Event</label>
+                        <input type="text" class="form-control" id="nama" name="nama" required
+                            autocomplete="off" value="<?= $event['nama'] ?>">
                     </div>
                     <div class="mb-3">
                         <label for="gambar" class="form-label">Gambar</label>
                         <input type="file" class="form-control" id="gambar" name="gambar" required autocomplete="off"
-                            value="<?= $lapangan['gambar'] ?>">
-                    </div>
-                    <div class="mb-3">
-                        <label for="kategori" class="form-label">Kategori</label>
-                        <input type="text" class="form-control" id="kategori" name="kategori" required autocomplete="off"
-                            value="<?= $lapangan['kategori'] ?>">
+                            value="<?= $event['gambar'] ?>">
                     </div>
                     <button type="submit" class="btn border border-danger btn-sm">
                         Ubah
                     </button>
+                    <a href="<?= base_url('admin/data') ?>">
+                    <button type="button" class="btn border border-warning btn-sm">
+                        Batal
+                    </button></a>
                 </form>
 
             </div>

@@ -48,14 +48,14 @@
                                     <div class="mb-3 mt-4">
                                         <input type="email"
                                             class="focus-ring focus-ring-warning form-control form-control" name="email"
-                                            id="email" placeholder="Email Anda" autocomplete="off">
+                                            id="email" placeholder="Email Anda" autocomplete="off" required>
                                             
                                     </div>
                                     <div class="mb-3">
                                     
                                         <input type="password"
                                             class="focus-ring focus-ring-warning form-control form-control"
-                                            name="password" id="password" placeholder="Password" autocomplete="off">
+                                            name="password" id="password" placeholder="Password" autocomplete="off" required>
                                             
                      
                                     </div>

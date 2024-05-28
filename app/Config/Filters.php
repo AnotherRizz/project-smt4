@@ -34,6 +34,7 @@ class Filters extends BaseFilters
         'forcehttps'    => ForceHTTPS::class,
         'pagecache'     => PageCache::class,
         'performance'   => PerformanceMetrics::class,
+       
     ];
 
     /**
@@ -103,5 +104,7 @@ class Filters extends BaseFilters
      *
      * @var array<string, array<string, list<string>>>
      */
-    public array $filters = [];
+    public array $filters = [
+      // Terapkan filter adminAuth sebelum mengakses semua rute yang dimulai dengan 'admin'
+    ];
 }

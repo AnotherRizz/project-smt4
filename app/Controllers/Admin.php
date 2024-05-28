@@ -5,21 +5,27 @@ namespace App\Controllers;
 use App\Models\LapanganModel;
 use App\Models\PelangganModel;
 use App\Models\OrderModel;
+use App\Models\EventModel;
+
 
 class Admin extends BaseController
 {
     protected $lapanganModel;
     protected $pelangganModel;
     protected $orderModel;
+    protected $eventModel;
+   
     public function __construct(){
 
         $this->lapanganModel = new LapanganModel();
         $this->pelangganModel = new PelangganModel();
         $this->orderModel = new OrderModel();
+        $this->eventModel = new EventModel();
+      
     }
    
-    public function index()
-    {
+    public function index(){
+        if( session()->get('logged_in' ,true)){
         $pelanggan= $this->pelangganModel->findAll();
         // menghitung isi dari field
         $userCount = $this->pelangganModel->countAllResults();
@@ -35,8 +41,11 @@ class Admin extends BaseController
         echo view('../Views/admin/header',$data);
         echo view('../Views/admin/admin',$data);
         echo view('../Views/admin/footer');
-    
+    }else{
+        return redirect()->to('/auth');
     }
+    }
+    
     public function logout()
     {
         // Hapus semua data session yang terkait dengan login
@@ -48,17 +57,24 @@ class Admin extends BaseController
     }
 
     public function data(){
+        if( session()->get('logged_in' , true)){
         $lapangan= $this->lapanganModel->findAll();
+        $event= $this->eventModel->findAll();
         $data =[
             'judul' => 'Data Admin',
+            'event' => $event,
             'lapangan' => $lapangan
            ];
            
             echo view('../Views/admin/header',$data);
             echo view('../Views/admin/data',$data);
             echo view('../Views/admin/footer');
+        }else{
+            return redirect()->to('/auth');
+        }
     }
     public function user(){
+        if( session()->get('logged_in')){
         $user= $this->pelangganModel->where('role', 2)->findAll();
         $data =[
             'judul' => 'Data User',
@@ -68,9 +84,14 @@ class Admin extends BaseController
             echo view('../Views/admin/header',$data);
             echo view('../Views/admin/user',$data);
             echo view('../Views/admin/footer');
+        }else{
+            return redirect()->to('/auth');
+        }
     }
     public function order(){
-        $order= $this->orderModel->findAll();
+        if( session()->get('logged_in')){
+        $order = $this->orderModel->getItem();
+        
         $data =[
             'judul' => 'Data Order',
             'order' => $order
@@ -79,6 +100,9 @@ class Admin extends BaseController
             echo view('../Views/admin/header',$data);
             echo view('../Views/admin/order',$data);
             echo view('../Views/admin/footer');
+        }else{
+            return redirect()->to('/auth');
+        }
     }
 
     public function status($id_pesanan){
@@ -95,8 +119,7 @@ class Admin extends BaseController
 
 
 
-
-
+// lapangan start
     public function tambah(){
         $gambarUpload = $this->request->getFile('gambar');
 
@@ -110,7 +133,11 @@ class Admin extends BaseController
             'ikon_gambar' =>$this->request->getVar('ikon_gambar')
         ]);
 
-        session()->setFlashdata('pesan','Data Berhasil Ditambahkan');
+        session()->setFlashdata('pesan', [
+            'title' => 'Berhasil',
+            'text' => 'Data Berhasil Ditambahkan',
+            'icon' => 'success'
+        ]);
 
 
         return redirect()->to('/admin/data');
@@ -150,9 +177,15 @@ class Admin extends BaseController
             'ikon_gambar' =>$this->request->getVar('ikon_gambar')
         ]);
 
-        session()->setFlashdata('pesan','Data Berhasil Diubah');
+        session()->setFlashdata('pesan', [
+            'title' => 'Berhasil',
+            'text' => 'Data Berhasil DiUbah',
+            'icon' => 'success'
+        ]);
 
 
         return redirect()->to('/admin/data');
     }
 }
+
+// lapangan end

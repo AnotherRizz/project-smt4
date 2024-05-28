@@ -74,7 +74,7 @@
                 <?php foreach ($order as $o) : ?>
                   <div class="row mb-3 booking-item" data-date="<?= $o['tanggal'] ?>">
                     <button class="btn btn-sm btn-primary fs-6 w-100 rounded-pill"><?= $o['waktu_mulai'] ?>.00 -
-                      <?= $o['waktu_selesai'] ?>.00</button>
+                      <?= $o['waktu_selesai'] ?>.00  <?= $o['tanggal'] ?></button>
                   </div>
                 <?php endforeach; ?>
               </div>
@@ -84,6 +84,7 @@
       </div>
     </div>
   </main>
+  
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>

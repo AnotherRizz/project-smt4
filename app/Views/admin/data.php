@@ -11,22 +11,21 @@
                      Data Primagama
                  </div>
                  <div class="card-body">
-                    
+
                      <!-- modal -->
                      <!-- Button trigger modal -->
                      <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
-                         data-bs-target="#exampleModal">
+                         data-bs-target="#exampleModal1">
                          + Tambah Data
                      </button>
-                     <?php if(session()->getFlashdata('pesan')) :?>
-                     <div class="alert alert-info" role="alert" id="flashMessage">
-                         <?= session()->getFlashdata('pesan');?>
-                     </div>
+                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
+                         data-bs-target="#exampleModal2">
+                         + Tambah Event
+                     </button>
 
-                     <?php endif ?>
 
-                     <!-- Modal -->
-                     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                     <!-- Modal tambah data -->
+                     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel"
                          aria-hidden="true">
                          <div class="modal-dialog">
                              <div class="modal-content">
@@ -54,6 +53,42 @@
                                              <label for="kategori" class="form-label">Kategori</label>
                                              <input type="text" class="form-control" id="kategori" name="kategori"
                                                  required autocomplete="off">
+                                         </div>
+
+                                 </div>
+                                 <div class="modal-footer">
+                                     <button type="button" class="btn btn-secondary"
+                                         data-bs-dismiss="modal">Batal</button>
+                                     <button type="submit" class="btn btn-primary">Simpan</button>
+                                 </div>
+                                 </form>
+                             </div>
+                         </div>
+                     </div>
+                     <!-- Modal tambah event -->
+                     <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel"
+                         aria-hidden="true">
+                         <div class="modal-dialog">
+                             <div class="modal-content">
+                                 <div class="modal-header">
+                                     <h1 class="modal-title fs-5" id="exampleModalLabel">Form Tambah Event</h1>
+                                     <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                         aria-label="Close"></button>
+                                 </div>
+                                 <?= csrf_field(); ?>
+                                 <div class="modal-body">
+                                     <!-- form tambah event -->
+                                     <form action="<?= base_url('event/tambah'); ?>" method="post"
+                                         enctype="multipart/form-data">
+                                         <div class="mb-3">
+                                             <label for="nama" class="form-label">Nama Event</label>
+                                             <input type="text" class="form-control" id="nama " name="nama" required
+                                                 autocomplete="off">
+                                         </div>
+                                         <div class="mb-3">
+                                             <label for="gambar" class="form-label">Gambar</label>
+                                             <input type="file" class="form-control" id="gambar" name="gambar" required
+                                                 autocomplete="off">
                                          </div>
 
                                  </div>
@@ -108,7 +143,42 @@
                              <?php endforeach; ?>
                          </tbody>
                      </table>
-                 </div>
-             </div>
+
+                    </div>
+                </div>
+                <!-- event tabel -->
+                <table class="table mt-5 border">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>GAMBAR</th>
+                            <th>NAMA EVENT</th>
+                            <th>OPSI</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    <?php foreach($event as $e) :?>
+                    <tr>
+                        <td><?= $e['id_event']; ?></td>
+                        <td><img src="<?= base_url('assets/img/uploads/').$e['gambar']; ?>" width="75" alt=""></td>
+                        <td><?= $e['nama']; ?></td>
+                        <td>
+                        <a href="/event/ubah/<?= $e['id_event']; ?>">
+                                    <button type="button" class="btn border border-success btn-sm">
+                                        <i class="fa-solid fa-pencil" style="color: #63E6BE;"></i>
+                                    </button>
+                                </a>
+
+                                <form action="/event/delete/<?= $e['id_event']; ?>" method="post">
+                                    <button type="submit" class="btn border border-danger btn-sm"
+                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Field Ini?!');">
+                                        <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                    </button>
+                                </form>
+                        </td>
+                    </tr>
+                    <?php endforeach; ?>
+                    </tbody>
+                </table>
          </div>
      </div>
