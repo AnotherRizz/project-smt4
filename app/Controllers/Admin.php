@@ -88,19 +88,30 @@ class Admin extends BaseController
             return redirect()->to('/auth');
         }
     }
-    public function order(){
-        if( session()->get('logged_in')){
-        $order = $this->orderModel->getItem();
-        
-        $data =[
-            'judul' => 'Data Order',
-            'order' => $order
-           ];
-           
-            echo view('../Views/admin/header',$data);
-            echo view('../Views/admin/order',$data);
-            echo view('../Views/admin/footer');
-        }else{
+    public function order()
+    {
+        if (session()->get('logged_in')) {
+            $month = $this->request->getPost('month');
+            $selectedMonth = $month;
+
+            if ($month) {
+                // Fetch orders based on the selected month
+                $order = $this->orderModel->where('MONTH(tanggal)', $month)->findAll();
+            } else {
+                // Fetch all orders if no month is selected
+                $order = $this->orderModel->findAll();
+            }
+
+            $data = [
+                'judul' => 'Data Order',
+                'order' => $order,
+                'selectedMonth' => $selectedMonth
+            ];
+
+            echo view('admin/header', $data);
+            echo view('admin/order', $data);
+            echo view('admin/footer', $data);
+        } else {
             return redirect()->to('/auth');
         }
     }

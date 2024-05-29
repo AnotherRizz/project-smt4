@@ -1,9 +1,5 @@
 <div class="col-10 ms-auto " id="user">
-<nav class="navbar bg-info">
-  <div class="container-fluid">
-    <span class="navbar-brand mb-0 h1">Admin / Data User <span><i class="fa-solid fa-users mx-2"style="color: #3D3B40;"></i></span></span>
-  </div>
-</nav>
+
   <section class="p-4">
   <div class="card my-3 ">
   <div class="card-body ">

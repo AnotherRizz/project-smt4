@@ -61,5 +61,10 @@ document.querySelectorAll('.update-status-btn').forEach(button => {
 });
 
  
+// filter option bulan di order
 
+// function filterByMonth() {
+//   var selectedMonth = document.getElementById("inputGroupSelect01").value;
+//   window.location.href = '<?= site_url("admin/order") ?>/' + selectedMonth;
+// }
    

@@ -32,7 +32,7 @@
     <main>
         <div class="row g-0">
             <div class="col-2 position-fixed" id="nav">
-                <nav class="navbar flex-column align-items-center justify-content-start border-end border-secondary ">
+                <nav class="navbar flex-column align-items-center justify-content-start shadow-lg">
                     <a class="navbar-brand" href="#"><i class="fa-solid fa-volleyball p-1 fs-2"
                             style="color: #ffc100;"></i>Primagama</a>
                     <div class="navbar-link mt-5 g-0">

@@ -7,6 +7,9 @@
    
 }
 
+body{
+    background-color: #EEEEEE;
+}
 
 
 tbody > tr > td{
@@ -17,7 +20,11 @@ tbody > tr > td{
 }
 #nav .navbar{
     min-height: 100vh;
-    background-color: #222831;
+    background-color: #373A40;
+}
+ .navbar{
+   
+    background-color: #373A40;
 }
 
 #navigasi .btn{
@@ -28,7 +35,7 @@ tbody > tr > td{
 text-decoration: none;
 font-size: 0.9rem;
 font-weight: 500;
-color: white;
+color: #fff;
 }
 
 /* admin dashboard */
@@ -105,11 +112,27 @@ color: white;
   
 }
 
+#data td {
+    font-size: 0.8rem;
+}
 
+
+/* order */
 #order
  .navbar-brand{
     font-size: 1rem;
     font-weight: 500;
     color: #3D3B40;
   
+}
+
+#order td ,th{
+    font-size: 0.8rem;
+}
+
+#order .judul{
+font-size: 1.8rem;
+}
+#order .card-title ,option{
+font-size: 1.3rem;
 }

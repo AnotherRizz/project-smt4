@@ -1,13 +1,8 @@
      <div class="col-10 ms-auto" id="data">
-         <nav class="navbar bg-info">
-             <div class="container-fluid">
-                 <span class="navbar-brand mb-0 h1">Admin / Data Lapangan <span><i class="fa-solid fa-users mx-2"
-                             style="color: #3D3B40;"></i></span></span>
-             </div>
-         </nav>
+       
          <div class="container mt-3">
-             <div class="card">
-                 <div class="card-header  bg-secondary text-light">
+             <div class="card border-secondary rounded-0">
+                 <div class="card-header rounded-0 bg-secondary text-light">
                      Data Primagama
                  </div>
                  <div class="card-body">
@@ -18,10 +13,7 @@
                          data-bs-target="#exampleModal1">
                          + Tambah Data
                      </button>
-                     <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal"
-                         data-bs-target="#exampleModal2">
-                         + Tambah Event
-                     </button>
+                    
 
 
                      <!-- Modal tambah data -->
@@ -102,7 +94,7 @@
                          </div>
                      </div>
                      <!-- tabel -->
-                     <table class="table mt-2">
+                     <table class="table mt-2 border ">
                          <thead>
                              <tr>
                                  <th>ID</th>
@@ -118,22 +110,22 @@
                              <tr>
                                  <td><?= $l['id_lapangan']; ?></td>
                                  <td><?= $l['nama_lapangan'] ?></td>
-                                 <td><img src="<?= base_url('assets/img/uploads/').$l['gambar']; ?>" width="100" alt="">
+                                 <td><img src="<?= base_url('assets/img/uploads/').$l['gambar']; ?>" width="75" alt="">
                                  </td>
                                  <td><?= $l['kategori'] ?></td>
-                                 <td>
+                                 <td class="">
                                      <!-- modal ubah data -->
                                      <!-- Button trigger modal -->
                                      <a href="/admin/ubah/<?= $l['id_lapangan']; ?>">
-                                         <button type="button" class="btn border border-success btn-sm">
-                                             <i class="fa-solid fa-pencil" style="color: #63E6BE;"></i>
+                                         <button type="button" class="btn border btn-warning btn-sm ">
+                                         UBAH <i class="fa-solid fa-pencil px-1" style="color: #ffff;"></i>
                                          </button>
                                      </a>
 
                                      <form action="/admin/delete/<?= $l['id_lapangan']; ?>" method="post">
-                                         <button type="submit" class="btn border border-danger btn-sm"
+                                         <button type="submit" class="btn border btn-danger btn-sm"
                                              onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Field Ini?!');">
-                                             <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                             HAPUS <i class="fa-solid fa-trash" style="color: #ffff;"></i>
                                          </button>
                                      </form>
 
@@ -147,38 +139,50 @@
                     </div>
                 </div>
                 <!-- event tabel -->
-                <table class="table mt-5 border">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                            <th>GAMBAR</th>
-                            <th>NAMA EVENT</th>
-                            <th>OPSI</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    <?php foreach($event as $e) :?>
-                    <tr>
-                        <td><?= $e['id_event']; ?></td>
-                        <td><img src="<?= base_url('assets/img/uploads/').$e['gambar']; ?>" width="75" alt=""></td>
-                        <td><?= $e['nama']; ?></td>
-                        <td>
-                        <a href="/event/ubah/<?= $e['id_event']; ?>">
-                                    <button type="button" class="btn border border-success btn-sm">
-                                        <i class="fa-solid fa-pencil" style="color: #63E6BE;"></i>
-                                    </button>
-                                </a>
+                <div class="card mt-5 border-secondary rounded-0">
+                <div class="card-header  bg-secondary rounded-0 text-light">
+                     Data Event
+                 </div>
+                 <div class="card-body">
+                        <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal1">
+                                + Tambah Event
+                            </button>
 
-                                <form action="/event/delete/<?= $e['id_event']; ?>" method="post">
-                                    <button type="submit" class="btn border border-danger btn-sm"
-                                        onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Field Ini?!');">
-                                        <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
-                                    </button>
-                                </form>
-                        </td>
-                    </tr>
-                    <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        <table class="table mt-2  border">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>GAMBAR</th>
+                                    <th>NAMA EVENT</th>
+                                    <th>OPSI</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <?php foreach($event as $e) :?>
+                            <tr>
+                                <td><?= $e['id_event']; ?></td>
+                                <td><img src="<?= base_url('assets/img/uploads/').$e['gambar']; ?>" width="75" alt=""></td>
+                                <td><?= $e['nama']; ?></td>
+                                <td>
+                                <a href="/event/ubah/<?= $e['id_event']; ?>">
+                                            <button type="button" class="btn border border-success btn-sm">
+                                                <i class="fa-solid fa-pencil" style="color: #63E6BE;"></i>
+                                            </button>
+                                        </a>
+        
+                                        <form action="/event/delete/<?= $e['id_event']; ?>" method="post">
+                                            <button type="submit" class="btn border border-danger btn-sm"
+                                                onclick="return confirm('Apakah Anda Yakin Ingin Menghapus Field Ini?!');">
+                                                <i class="fa-solid fa-trash" style="color: #ff0000;"></i>
+                                            </button>
+                                        </form>
+                                </td>
+                            </tr>
+                            <?php endforeach; ?>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
          </div>
      </div>
