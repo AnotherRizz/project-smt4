@@ -85,7 +85,7 @@ main .btn:hover{
 
 #lapangan .card {
   transition: transform 0.5s;
- border-radius: 2rem;
+ border-radius: 1rem;
  background-color: #ffc100;
  box-shadow: 0 3px 8px rgba(87, 87, 87, 0.862);
 }

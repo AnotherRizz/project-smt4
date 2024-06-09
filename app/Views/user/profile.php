@@ -20,13 +20,49 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <link rel="stylesheet" href="<?= base_url('assets/css/pesan.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('assets/css/profil.css'); ?>">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .card-header {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .card {
+            background-color: #EEEDEB;
+        }
+
+        .table th, .table td {
+            vertical-align: middle;
+        }
+
+        .btn-logout {
+            margin-top: 20px;
+        }
+
+        .btn-view-details {
+            margin-top: 10px;
+        }
+
+        .modal-header {
+            background-color: #343a40;
+            color: white;
+        }
+
+        .btn-close {
+            background-color: white;
+        }
+    </style>
 </head>
 
 <body>
     <main id="profil">
         <div class="container mt-5">
-            <div class="card" style="background-color: #EEEDEB;">
+            <div class="card">
                 <div class="card-header">
                     <a href="<?= base_url('/') ?>" class="btn btn-sm btn-secondary">
                         <i class="fa-solid fa-arrow-left mx-2" style="color: #ffffff;"></i>Home
@@ -39,7 +75,7 @@
                         </div>
                         <div class="col-md-4 col-12 mt-3 mt-md-5">
                             <h2 class="text-secondary">Selamat Datang <span class="text-warning"><?= $namaPelanggan ?></span></h2>
-                            <a href="<?= base_url('home/logout') ?>" class="btn btn-sm btn-danger" id="status">Logout</a>
+                            <a href="<?= base_url('home/logout') ?>" class="btn btn-sm btn-danger btn-logout" id="status">Logout</a>
                         </div>
                         <div class="col-md-6 col-12 mt-4 mt-md-0">
                             <h2 class="text-center" style="color: #481E14;">Riwayat Pesanan</h2>
@@ -47,12 +83,10 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <div class="row">
-
-                                        <div class="col ">
+                                        <div class="col">
                                             <table class="table">
                                                 <thead>
                                                     <tr>
-
                                                         <th>Lapangan</th>
                                                         <th>Waktu</th>
                                                         <th>Harga</th>
@@ -62,59 +96,47 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr>
-
                                                         <td><?= esc($o['kategori']) ?></td>
                                                         <td><?= esc($o['durasi']) ?> Menit</td>
                                                         <td>Rp.<?= esc($o['harga']) ?></td>
                                                         <td><?= esc($o['tanggal']) ?></td>
                                                         <td>
-                                                            <?php if($o['status']==1 ): ?>
-                                                            <button type="button"
-                                                                class="btn btn-sm btn-danger text-light "
-                                                                id="status">Belum Bayar</button>
-
+                                                            <?php if($o['status']==1): ?>
+                                                                <button type="button" class="btn btn-sm btn-danger text-light" id="status">Belum Bayar</button>
                                                             <?php else: ?>
-
-                                                            <button class="btn btn-sm btn-success text-light "
-                                                                id="status">Sudah Bayar</button>
+                                                                <button class="btn btn-sm btn-success text-light" id="status">Sudah Bayar</button>
+                                                            <?php endif; ?>
                                                         </td>
-                                                        <?php endif; ?>
-
                                                     </tr>
                                                 </tbody>
                                             </table>
-
-
                                         </div>
-
                                     </div>
-                                    <div class="row ms-auto">
-                                        <button class="btn btn-secondary open-modal-btn "
-                                            data-id="<?= $o['id_pesanan'] ?>" id="status">lihat detail
-                                            <i class="fa-solid fa-arrow-up-from-bracket px-2"
-                                                style="color: #ffffff;"></i>
-                                        </button>
+                                    <div class="row">
+                                        <div class="col text-end">
+                                            <button class="btn btn-secondary open-modal-btn btn-view-details"
+                                                data-id="<?= $o['id_pesanan'] ?>" id="status">Lihat Detail
+                                                <i class="fa-solid fa-arrow-up-from-bracket px-2" style="color: #ffffff;"></i>
+                                            </button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                             <?php endforeach; ?>
                             <!-- Modal HTML -->
-                            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel"
-                                aria-hidden="true">
+                            <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="orderModalLabel">Order Details</h5>
-                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                                aria-label="Close"></button>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                         </div>
                                         <div class="modal-body">
                                             <!-- Konten dinamis akan diisi di sini -->
                                             <div id="modalContent"></div>
                                         </div>
                                         <div class="modal-footer">
-                                            <button type="button" class="btn btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                     </div>
                                 </div>
@@ -126,33 +148,31 @@
         </div>
     </main>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
-    </script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
-       $(document).ready(function () {
-    $('.open-modal-btn').on('click', function () {
-        var id_pesanan = $(this).data('id');
+        $(document).ready(function () {
+            $('.open-modal-btn').on('click', function () {
+                var id_pesanan = $(this).data('id');
 
-        // Menggunakan AJAX untuk mendapatkan data berdasarkan ID
-        $.ajax({
-            url: '<?= base_url('home/getOrderDetails') ?>/' + id_pesanan, // Menghapus spasi yang tidak diperlukan
-            method: 'GET',
-            success: function (response) {
-                // Isi modal dengan data yang diterima
-                $('#modalContent').html(response);
+                // Menggunakan AJAX untuk mendapatkan data berdasarkan ID
+                $.ajax({
+                    url: '<?= base_url('home/getOrderDetails') ?>/' + id_pesanan, // Menghapus spasi yang tidak diperlukan
+                    method: 'GET',
+                    success: function (response) {
+                        // Isi modal dengan data yang diterima
+                        $('#modalContent').html(response);
 
-                // Tampilkan modal
-                var orderModal = new bootstrap.Modal(document.getElementById('orderModal'), {});
-                orderModal.show();
-            },
-            error: function () {
-                alert('Failed to fetch data');
-            }
+                        // Tampilkan modal
+                        var orderModal = new bootstrap.Modal(document.getElementById('orderModal'), {});
+                        orderModal.show();
+                    },
+                    error: function () {
+                        alert('Failed to fetch data');
+                    }
+                });
+            });
         });
-    });
-});
-
     </script>
 </body>
 

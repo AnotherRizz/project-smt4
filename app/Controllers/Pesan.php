@@ -3,18 +3,22 @@
 namespace App\Controllers;
 use App\Models\LapanganModel;
 use App\Models\OrderModel;
+use App\Models\GalleryModel;
 use App\Models\PelangganModel;
 use CodeIgniter\CLI\Console;
+use Dompdf\Adapter\GD;
 
 class Pesan extends BaseController
 
 {
     protected $lapanganModel;
     protected $OrderModel;
+    protected $galleryModel;
 
     public function __construct(){
         $this->lapanganModel = new LapanganModel();
         $this->OrderModel = new OrderModel();
+        $this->galleryModel = new GalleryModel();
     
 
     }
@@ -22,6 +26,7 @@ class Pesan extends BaseController
     {
         $lapangan = $this->lapanganModel->find($id);
         $order = $this->OrderModel->where('kategori', $lapangan['kategori'])->findAll();
+        $gallery = $this->galleryModel->where('id_lapangan', $lapangan['id_lapangan'])->findAll();
        
 
         if( session()->get('logged_in')){
@@ -32,6 +37,7 @@ class Pesan extends BaseController
         'lapangan' => $lapangan,
         'namaPelanggan' => $namaPelanggan,
         'id_pelanggan' => $idPelanggan,
+        'gallery' => $gallery,
         'order' => $order
         
         

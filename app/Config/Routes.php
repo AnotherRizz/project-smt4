@@ -34,3 +34,4 @@ $routes->post('event/delete/(:num)', 'Event::delete/$1');
 $routes->get('event/ubah/(:num)', 'Event::ubah/$1');
 $routes->post('event/update', 'Event::update');
 
+$routes->post('gallery/tambah', 'Gallery::tambah');

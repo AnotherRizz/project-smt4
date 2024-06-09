@@ -1,6 +1,9 @@
  *{
   /* border: 1px solid red; */
  }
+
+
+
  
  h3{
   font-size: 1.6rem;
@@ -45,53 +48,3 @@
   color: #3D3B40;
 
 }
-
-/* profil */
-
-#profil h2{
-  color: #3D3B40;
-  font-family: "Freeman", sans-serif;
-  font-size: 1.3rem;
-  font-weight: 500;
-}
-#profil h1{
-  color: #3D3B40;
-  font-family: "Freeman", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-#profil .card-header{
-  color: #3D3B40;
-  font-family: "Freeman", sans-serif;
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-#profil td{
-  color: #5a575e;
-  font-family: "Freeman", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 500;
-}
-#profil th{
-  color: #481E14;
-  font-family: "Freeman", sans-serif;
-  font-size: 1rem;
-  font-weight: 600;
-}
-#profil #status{
-  color: white;
-  font-family: "Freeman", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 500;
-}
-
-/* details */
-#details h2{
-  color: #3D3B40;
-  font-family: "Poppins", sans-serif;
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-

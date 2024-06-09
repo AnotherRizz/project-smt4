@@ -61,10 +61,21 @@ document.querySelectorAll('.update-status-btn').forEach(button => {
 });
 
  
-// filter option bulan di order
+// tambah Gallery
 
-// function filterByMonth() {
-//   var selectedMonth = document.getElementById("inputGroupSelect01").value;
-//   window.location.href = '<?= site_url("admin/order") ?>/' + selectedMonth;
-// }
-   
+document.querySelectorAll('.table #tambahGallery').forEach(function(tambah) {
+  
+  tambah.addEventListener('click', function() {
+    // Ambil nilai dari elemen yang diklik
+    let valueToSend = tambah.value; // Asumsikan ada atribut data-value
+    
+    // Temukan elemen hidden input di dalam modal dan isi dengan nilai yang diambil
+    document.querySelector('#valueLap').value = valueToSend;
+
+    
+    
+  
+});
+});
+
+

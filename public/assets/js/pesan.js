@@ -25,3 +25,12 @@ function filterBookings() {
 
 selectElement.addEventListener('change', filterBookings);
 filterBookings();
+
+
+// gallery
+const jumbo = document.querySelector('#jumbo');
+document.querySelectorAll('.images').forEach(img => {
+  img.addEventListener('click', function() {
+    jumbo.src= this.src;
+  });
+});
